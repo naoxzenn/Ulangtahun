@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #ffd1dc, #b8325d);
+  overflow: hidden;
+}
+
+/* Frame utama */
+.message-frame {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: radial-gradient(circle at top, #ffe0eb 0%, #b8325d 100%);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  padding: 20px;
+}
+
+/* Ornamen kiri & kanan */
+.ornament {
+    position: absolute;
+    width: 120px;
+    height: 120px; /* ukuran sama semua */
+    opacity: 0.95;
+    transition: transform 0.5s ease;
+    pointer-events: none;
+    transform-origin: center;
+    z-index: 10; /* pastikan berada di atas .message-box */
+}
+
+/* Jika ornamen adalah gambar, pastikan ukurannya konsisten */
+.ornament img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+}
+
+/* Pastikan kotak pesan berada di bawah ornamen */
+.message-box {
+    z-index: 1;
+}
+
+.ornament.left {
+  top: 20px;
+  left: -20px;
+}
+
+.ornament.right {
+  bottom: 20px;
+  right: -20px;
+}
+
+.ornament:hover {
+  transform: scale(1.1);
+}
+
+/* Kotak pesan */
+.message-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 330px;
+  max-height: 680px;
+  overflow-y: auto;
+  padding: 35px 25px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 25px;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  animation: fadeIn 1s ease forwards;
+}
+
+.message-box h1 {
+  color: #c2185b;
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.message-box p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  white-space: pre-line;
+}
+
+.message-box .love {
+  text-align: center;
+  color: #b71c5a;
+  font-weight: bold;
+}
+
+.back {
+  display: block;
+  text-align: center;
+  margin: 20px auto 0;
+  width: fit-content;
+  padding: 10px 25px;
+  background: #c2185b;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.back:hover {
+  background: #9c1348;
+}
+
+/* Animasi lembut */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -40%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Scrollbar lembut */
+.message-box::-webkit-scrollbar {
+  width: 6px;
+}
+.message-box::-webkit-scrollbar-thumb {
+  background: #c2185b;
+  border-radius: 3px;
+}
